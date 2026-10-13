@@ -85,7 +85,9 @@ and `<vip>` in its subject alternative name.
 | Parent Profile | `clientssl` |
 | Certificate Key Chain | Tick **Custom**, click **Add**. Certificate `csv_lab`, Key `csv_lab`, Chain *None*. Click **Add** |
 
-![The client SSL profile. Only the name and the certificate key chain change.](img/g05-clientssl-create.png)
+![The Add SSL Certificate Key Chain dialog: certificate and key csv_lab, chain None.](img/g05b-clientssl-ckc-dialog.png)
+
+![The profile before Finished: parent clientssl and the chain listed.](img/g05-clientssl-create.png)
 
 ## HTTP profile
 
