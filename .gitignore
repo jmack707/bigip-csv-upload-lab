@@ -1,0 +1,6 @@
+# generated locally, never committed
+.env*
+test/tls/
+test/files/
+test/results/
+__pycache__/

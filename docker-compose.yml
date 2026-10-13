@@ -1,0 +1,63 @@
+# CSV upload lab, BIG-IP-routed flow. Works with podman-compose and docker compose.
+#
+#   scripts/gen-secret.sh                 # once: writes .env with VALIDATION_SECRET
+#   podman-compose up -d --build          # validator (ICAP + HTTP) and upload application
+#
+# The ICAP antivirus runs separately (icap-av/docker-compose.yml), normally on its own VM.
+#
+# Reachability the BIG-IP needs:
+#   validator ICAP  :1345 -> 1344   request-adapt internal virtual server pool
+#   validator HTTP  :8080           health monitor (GET /ready) and validate-only POST /upload
+#   sink HTTP       :8081           pool member of vs_csv_lab
+# In anything beyond a lab, firewall all three to the BIG-IP self IPs.
+
+services:
+  validator:
+    build: ./validator
+    image: localhost/csv-lab/validator:2.0
+    container_name: csv-validator
+    ports:
+      - "0.0.0.0:8080:8080"
+      - "0.0.0.0:1345:1344"
+    environment:
+      MAX_FILE_BYTES: "1048576"
+      MAX_REQUEST_BYTES: "1310720"
+      FILE_FIELD: "file"
+      UPLOAD_PATH: "/upload"
+      ALLOWED_CONTENT_TYPES: "text/csv,application/csv,application/vnd.ms-excel"
+      CONTENT_TYPE_COMPAT: "false"
+      DELIMITERS: ",;\t"
+      IGNORE_TRAILING_BLANK_LINES: "${IGNORE_TRAILING_BLANK_LINES:-false}"
+      ALLOW_SIGNED_NUMBERS: "true"
+      ICAP_ENABLED: "true"
+      ICAP_PORT: "1344"
+      VALIDATION_SECRET: "${VALIDATION_SECRET:?run scripts/gen-secret.sh first}"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 64
+    restart: unless-stopped
+
+  sink:
+    build: ./sink
+    image: localhost/csv-lab/sink:2.0
+    container_name: csv-sink
+    ports:
+      - "0.0.0.0:8081:8081"
+    environment:
+      SINK_DATA_DIR: "/data"
+      VALIDATION_SECRET: "${VALIDATION_SECRET:?run scripts/gen-secret.sh first}"
+    volumes:
+      - sink-data:/data
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 128m
+    cpus: 0.5
+    pids_limit: 64
+    restart: unless-stopped
+
+volumes:
+  sink-data: {}

@@ -1,0 +1,489 @@
+{
+  "policy": {
+    "name": "waf_csv_lab",
+    "fullPath": "/CSV/waf_csv_lab",
+    "description": "CSV upload lab: WAF controls for POST /upload, ICAP antivirus on file uploads. Imported from bigip/waf_csv_lab.json.",
+    "template": {
+      "name": "POLICY_TEMPLATE_FUNDAMENTAL"
+    },
+    "applicationLanguage": "utf-8",
+    "enforcementMode": "blocking",
+    "protocolIndependent": true,
+    "caseInsensitive": false,
+    "general": {
+      "enforcementReadinessPeriod": 0,
+      "trustXff": false,
+      "allowedResponseCodes": [
+        400,
+        401,
+        404,
+        407,
+        411,
+        413,
+        415,
+        417,
+        422,
+        502,
+        503,
+        504
+      ]
+    },
+    "signature-settings": {
+      "signatureStaging": false,
+      "placeSignaturesInStaging": false,
+      "attackSignatureFalsePositiveMode": "disabled"
+    },
+    "signature-sets": [
+      {
+        "name": "Generic Detection Signatures (High/Medium Accuracy)",
+        "alarm": true,
+        "block": true,
+        "learn": false
+      }
+    ],
+    "header-settings": {
+      "maximumHttpHeaderLength": 8192
+    },
+    "methods": [
+      {
+        "name": "POST",
+        "actAsMethod": "POST"
+      },
+      {
+        "name": "GET",
+        "actAsMethod": "GET"
+      },
+      {
+        "name": "HEAD",
+        "actAsMethod": "GET"
+      }
+    ],
+    "filetypes": [
+      {
+        "name": "*",
+        "type": "wildcard",
+        "$action": "delete"
+      },
+      {
+        "name": "no_ext",
+        "type": "explicit",
+        "allowed": true,
+        "performStaging": false,
+        "checkRequestLength": true,
+        "requestLength": 1310720,
+        "checkPostDataLength": true,
+        "postDataLength": 1310720,
+        "checkUrlLength": true,
+        "urlLength": 64,
+        "checkQueryStringLength": true,
+        "queryStringLength": 0,
+        "responseCheck": false
+      }
+    ],
+    "urls": [
+      {
+        "name": "*",
+        "type": "wildcard",
+        "$action": "delete"
+      },
+      {
+        "name": "/upload",
+        "type": "explicit",
+        "method": "POST",
+        "isAllowed": true,
+        "performStaging": false,
+        "attackSignaturesCheck": true,
+        "disallowFileUploadOfExecutables": true,
+        "mandatoryBody": true,
+        "methodsOverrideOnUrlCheck": false,
+        "clickjackingProtection": false,
+        "metacharsOnUrlCheck": false,
+        "urlContentProfiles": [
+          {
+            "headerName": "Content-Type",
+            "headerValue": "multipart/form-data*",
+            "headerOrder": "1",
+            "type": "form-data"
+          },
+          {
+            "headerName": "*",
+            "headerValue": "*",
+            "headerOrder": "default",
+            "type": "disallow"
+          }
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "name": "*",
+        "type": "wildcard",
+        "$action": "delete"
+      },
+      {
+        "name": "file",
+        "type": "explicit",
+        "level": "url",
+        "parameterLocation": "form-data",
+        "valueType": "user-input",
+        "dataType": "binary",
+        "mandatory": true,
+        "allowEmptyValue": false,
+        "allowRepeatedParameterName": false,
+        "performStaging": false,
+        "disallowFileUploadOfExecutables": true,
+        "checkMaxValueLength": true,
+        "maximumLength": 1048576,
+        "attackSignaturesCheck": false,
+        "checkMetachars": false,
+        "metacharsOnParameterValueCheck": false,
+        "url": {
+          "name": "/upload",
+          "type": "explicit",
+          "method": "POST"
+        },
+        "decodeValueAsBase64": "disabled"
+      },
+      {
+        "name": "filename",
+        "type": "explicit",
+        "level": "url",
+        "url": {
+          "name": "/upload",
+          "type": "explicit",
+          "method": "POST"
+        },
+        "parameterLocation": "form-data",
+        "valueType": "user-input",
+        "dataType": "alpha-numeric",
+        "mandatory": true,
+        "allowEmptyValue": false,
+        "allowRepeatedParameterName": false,
+        "performStaging": false,
+        "checkMaxValueLength": true,
+        "maximumLength": 104,
+        "regularExpression": "^[A-Za-z0-9_-]{1,100}\\.csv$",
+        "attackSignaturesCheck": true,
+        "checkMetachars": false,
+        "metacharsOnParameterValueCheck": false,
+        "enableRegularExpression": true,
+        "decodeValueAsBase64": "disabled"
+      }
+    ],
+    "blocking-settings": {
+      "violations": [
+        {
+          "name": "VIOL_FILE_UPLOAD",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_FILE_UPLOAD_IN_BODY",
+          "alarm": true,
+          "block": true
+        },
+        {
+          "name": "VIOL_FILETYPE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_URL",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_URL_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_URL_CONTENT_TYPE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_METHOD",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_LOCATION",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_VALUE_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_EMPTY_VALUE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_REPEATED",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_MULTIPART_NULL_VALUE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_DATA_TYPE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_MANDATORY_PARAMETER",
+          "alarm": true,
+          "block": true
+        },
+        {
+          "name": "VIOL_MANDATORY_REQUEST_BODY",
+          "alarm": true,
+          "block": true
+        },
+        {
+          "name": "VIOL_REQUEST_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_POST_DATA_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_QUERY_STRING_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_REQUEST_MAX_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_HEADER_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_COOKIE_LENGTH",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_HTTP_PROTOCOL",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_EVASION",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_ATTACK_SIGNATURE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_ENCODING",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_VALUE_REGEXP",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_NUMERIC_VALUE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_PARAMETER_STATIC_VALUE",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_HTTP_RESPONSE_STATUS",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        },
+        {
+          "name": "VIOL_VIRUS",
+          "alarm": true,
+          "block": true,
+          "learn": false
+        }
+      ],
+      "http-protocols": [
+        {
+          "description": "Bad multipart/form-data request parsing",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Bad multipart parameters parsing",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Unparsable request content",
+          "enabled": true
+        },
+        {
+          "description": "Several Content-Length headers",
+          "enabled": true
+        },
+        {
+          "description": "Chunked request with Content-Length header",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Content length should be a positive number",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "POST request with Content-Length: 0",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Null in request",
+          "enabled": true
+        },
+        {
+          "description": "Bad HTTP version",
+          "enabled": true
+        },
+        {
+          "description": "No Host header in HTTP/1.1 request",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Multiple host headers",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Header name with no header value",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "CRLF characters before request start",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Body in GET or HEAD requests",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Check maximum number of headers",
+          "enabled": true,
+          "learn": false,
+          "maxHeaders": 30
+        },
+        {
+          "description": "Check maximum number of parameters",
+          "enabled": true,
+          "learn": false,
+          "maxParams": 10
+        },
+        {
+          "description": "Check maximum number of cookies",
+          "enabled": true,
+          "learn": false,
+          "maxCookies": 10
+        },
+        {
+          "description": "Unescaped space in URL",
+          "enabled": true,
+          "learn": false
+        }
+      ],
+      "evasions": [
+        {
+          "description": "Directory traversals",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "Multiple decoding",
+          "enabled": true,
+          "learn": false,
+          "maxDecodingPasses": 2
+        },
+        {
+          "description": "Bad unescape",
+          "enabled": true,
+          "learn": false
+        },
+        {
+          "description": "%u decoding",
+          "enabled": true,
+          "learn": false
+        }
+      ]
+    },
+    "response-pages": [
+      {
+        "responsePageType": "default",
+        "responseActionType": "custom",
+        "responseHeader": "HTTP/1.1 403 Forbidden\r\nContent-Type: application/json\r\nConnection: close",
+        "responseContent": "{\"blocked_by\":\"bigip-asm\",\"support_id\":\"<%TS.request.ID()%>\"}"
+      }
+    ],
+    "policy-builder": {
+      "learningMode": "disabled"
+    },
+    "antivirus": {
+      "inspectHttpUploads": true
+    }
+  }
+}

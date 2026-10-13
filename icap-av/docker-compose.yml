@@ -1,0 +1,23 @@
+# ICAP antivirus for BIG-IP Advanced WAF (c-icap + ClamAV). Run this on the antivirus VM.
+#
+#   podman-compose up -d --build                    # full ClamAV signatures (needs ~2 GiB RAM, outbound HTTPS)
+#   CLAMAV_DB=test podman-compose up -d --build     # EICAR-only test database (small hosts; not a real antivirus)
+services:
+  icap-av:
+    build: .
+    image: localhost/csv-lab/icap-av:1.0
+    container_name: csv-icap-av
+    ports:
+      - "0.0.0.0:1344:1344"
+    environment:
+      CLAMAV_DB: "${CLAMAV_DB:-full}"
+    volumes:
+      - clamav-db:/var/lib/clamav
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: "${ICAP_AV_MEM:-2g}"
+    cpus: 1.0
+    pids_limit: 128
+    restart: unless-stopped
+volumes:
+  clamav-db: {}
