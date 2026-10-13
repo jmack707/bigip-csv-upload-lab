@@ -33,7 +33,9 @@ Learning is disabled because nothing in this lab is learned from traffic:
 you set every control by hand. Left on its default, the policy would be free
 to relax itself.
 
-![The policy create form as it opens. Enter the values from the table.](img/g09-01-policy-create.png)
+![The policy create form: name, template and application language.](img/g09-01-policy-create-1.png)
+
+![Learning and blocking: Blocking, learning disabled, signature staging disabled, URL differentiation disabled.](img/g09-01-policy-create-2.png)
 
 ## General settings
 
@@ -82,7 +84,9 @@ Click **Save**.
 Delete the rows for `*json*` and `*xml*`. Click **Update**. A request with
 any other content type is now refused.
 
-![The upload URL and its content profiles.](img/g09-04c-url-content-profiles.png)
+![The upload URL: executables disallowed, body mandatory.](img/g09-04c-url-content-profiles-1.png)
+
+![Content profiles: multipart/form-data allowed as Form Data, everything else disallowed.](img/g09-04c-url-content-profiles-2.png)
 
 ## Allowed file type
 

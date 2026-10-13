@@ -102,7 +102,9 @@ in the `X-Forwarded-For` header.
 | Parent Profile | `http` |
 | Insert X-Forwarded-For | Tick **Custom**, set **Enabled** |
 
-![Insert X-Forwarded-For enabled.](img/g08-http-create.png)
+![The HTTP profile: name and parent profile.](img/g08-http-create-1.png)
+
+![Insert X-Forwarded-For enabled.](img/g08-http-create-2.png)
 
 ## Health monitors
 
