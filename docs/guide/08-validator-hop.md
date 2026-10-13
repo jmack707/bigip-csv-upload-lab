@@ -101,11 +101,9 @@ reach it; only the outer virtual server you build next can.
 | Source Address Translation | *Auto Map* |
 | Default Pool | `pool_csv_sink` |
 
-![Name, address and port.](img/v2-12-inner-vs-1.png)
+![Name, address, port and the HTTP profile.](img/v2-12-inner-vs-1.png)
 
-![The HTTP profile.](img/v2-12-inner-vs-2.png)
-
-![Request adapt, no VLANs, Auto Map and the application pool.](img/v2-12-inner-vs-3.png)
+![Request adapt, no VLANs and Auto Map.](img/v2-12-inner-vs-2.png)
 
 **You should see** `ivs_csv_validator` and `vs_csv_inner` in the Virtual
 Server List, both available.

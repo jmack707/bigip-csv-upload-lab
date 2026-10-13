@@ -33,9 +33,7 @@ Learning is disabled because nothing in this lab is learned from traffic:
 you set every control by hand. Left on its default, the policy would be free
 to relax itself.
 
-![The policy create form: name, template and application language.](img/g09-01-policy-create-1.png)
-
-![Learning and blocking: Blocking, learning disabled, signature staging disabled, URL differentiation disabled.](img/g09-01-policy-create-2.png)
+![The policy create form filled in: name, template, application language, Blocking, learning disabled, signature staging disabled, URL differentiation disabled.](img/g09-01-policy-create.png)
 
 ## General settings
 

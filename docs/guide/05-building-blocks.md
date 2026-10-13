@@ -35,7 +35,7 @@ Click **Finished**. Then set the **Partition** selector at the top right of
 the page to **CSV** and leave it there for the rest of the build. If an
 object later turns up in *Common*, this is the step that was missed.
 
-![The new partition.](img/g02-partition-create-1.png)
+![The new partition.](img/g02-partition-create.png)
 
 ## Routes to the lab hosts
 
