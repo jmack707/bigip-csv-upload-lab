@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · **Entry point** · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # The entry point
 
 Two objects remain: a policy that strings the steps together, and the
@@ -99,3 +105,8 @@ u bad_formula_eq.csv     # rejected by the validator
 | `[403]` for `ok_basic.csv` | The scanner cannot be reached, or a response code is missing from the policy (chapter 6). Look up the support ID as described in chapter 11 |
 | A connection reset | The validator pool is down |
 | `curl: (60)` | The `--cacert` option is missing. That is certificate validation working |
+
+<!-- nav -->
+---
+← [The validator hop](08-validator-hop.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Acceptance tests](10-acceptance.md) →
+<!-- /nav -->

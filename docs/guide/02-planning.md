@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · **Planning** · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # Planning and prerequisites
 
 ## Planning worksheet
@@ -105,3 +111,8 @@ You received `csv-upload-lab-<version>.zip` with this guide. Unpack it on
 Nothing in the bundle contains a password, a key or an address from your
 environment. The scripts create those locally and keep them out of version
 control.
+
+<!-- nav -->
+---
+← [Introduction](01-introduction.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Prepare the two Linux VMs](03-hosts.md) →
+<!-- /nav -->

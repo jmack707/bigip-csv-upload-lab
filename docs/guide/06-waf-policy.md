@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · **WAF policy** · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # The Advanced WAF policy
 
 This is the longest chapter. The policy allows exactly one thing, a `POST`
@@ -213,3 +219,8 @@ Click **Apply Policy**, the blue button at the top right, and confirm.
 
 **You should see** `waf_csv_lab` in the Policies List in *Blocking* mode with
 no pending-changes marker.
+
+<!-- nav -->
+---
+← [BIG-IP building blocks](05-building-blocks.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Antivirus scanning](07-antivirus.md) →
+<!-- /nav -->

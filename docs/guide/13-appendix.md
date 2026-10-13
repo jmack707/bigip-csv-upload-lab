@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · **Appendices**
+
+---
+<!-- /nav -->
+
 # Appendix A: scripted build
 
 `bigip/apply.py` builds everything in chapters 5 to 9 through the BIG-IP's
@@ -130,3 +136,8 @@ These were found while building and testing the lab.
   external anti-virus protection
 - RFC 3507: Internet Content Adaptation Protocol (ICAP)
 - RFC 4180: Common Format and MIME Type for CSV Files
+
+<!-- nav -->
+---
+← [Show the lab to others](12-showcase.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Repository README](../../README.md) →
+<!-- /nav -->

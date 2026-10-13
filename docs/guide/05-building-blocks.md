@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · **LTM objects** · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # BIG-IP building blocks
 
 These are ordinary LTM objects. Screenshots show the *Create* form filled in
@@ -145,3 +151,8 @@ means the BIG-IP cannot reach the service from a self IP: check the route
 above, any firewall between them, and that the services are running.
 
 ![Both pools available.](img/v2-16-pool-list.png)
+
+<!-- nav -->
+---
+← [Build the lab services](04-services.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [The Advanced WAF policy](06-waf-policy.md) →
+<!-- /nav -->

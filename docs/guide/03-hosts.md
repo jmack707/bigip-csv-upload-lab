@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · **VMs** · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # Prepare the two Linux VMs
 
 Create two VMs on your hypervisor with the sizes from chapter 2, a current
@@ -64,3 +70,8 @@ between.
 | Port 1344 or 1345 "permission denied" | Rootless Podman cannot bind below 1024 | The sysctl the script sets, then restart the containers |
 | The BIG-IP monitor stays red though the service answers locally | Firewall, or the BIG-IP is reaching from the wrong address | `--allow` must list the self IP on the VLAN the BIG-IP uses towards the VM. Check with `nft list ruleset` and a packet capture on the VM |
 | `apt` hangs on an IPv6 address | The VM resolves mirrors to IPv6 but has no IPv6 route | Set `Acquire::ForceIPv4 "true";` in `/etc/apt/apt.conf.d/99force-ipv4` |
+
+<!-- nav -->
+---
+← [Planning and prerequisites](02-planning.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Build the lab services](04-services.md) →
+<!-- /nav -->

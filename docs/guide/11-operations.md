@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · **Operations** · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # Operations
 
 ## Finding out what happened to an upload
@@ -68,3 +74,8 @@ On the lab hosts:
 podman-compose down -v                        # validator and application
 (cd icap-av && podman-compose down -v)        # antivirus
 ```
+
+<!-- nav -->
+---
+← [Acceptance tests](10-acceptance.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Show the lab to others](12-showcase.md) →
+<!-- /nav -->

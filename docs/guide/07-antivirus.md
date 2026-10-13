@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · **Antivirus** · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # Antivirus scanning
 
 Advanced WAF can hand each uploaded file to an antivirus scanner over ICAP
@@ -54,3 +60,8 @@ you change the antivirus server address or port.
 
 You prove the scan in chapter 9, once there is a virtual server to send
 uploads to.
+
+<!-- nav -->
+---
+← [The Advanced WAF policy](06-waf-policy.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [The validator hop](08-validator-hop.md) →
+<!-- /nav -->

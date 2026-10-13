@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · **Showcase** · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # Show the lab to others
 
 Once the lab passes its tests you can use it to show, in about twenty
@@ -92,3 +98,8 @@ Say plainly that the three services are sample code written for this lab,
 that antivirus test mode detects only the test string, and that the file
 rules in Appendix C are a policy, not a proof that a file is safe. Showing
 the limits is part of the demonstration.
+
+<!-- nav -->
+---
+← [Operations](11-operations.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Appendix A: scripted build](13-appendix.md) →
+<!-- /nav -->

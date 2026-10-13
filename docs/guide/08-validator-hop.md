@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · **Validator hop** · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # The validator hop
 
 The BIG-IP feature that sends a request to an outside service for a verdict
@@ -111,3 +117,8 @@ WAF policy. On 21.1.0.2 that runs request adapt *first*: the validator sees
 every request before the WAF has had the chance to block it. Splitting the
 work across two virtual servers fixes the order. The outer one runs the WAF
 and the antivirus; only what survives is forwarded to the inner one.
+
+<!-- nav -->
+---
+← [Antivirus scanning](07-antivirus.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [The entry point](09-entry-point.md) →
+<!-- /nav -->

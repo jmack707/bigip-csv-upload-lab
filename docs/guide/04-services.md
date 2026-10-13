@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · **Services** · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · [Tests](10-acceptance.md) · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # Build the lab services
 
 In this chapter you start the three sample services and prove each one
@@ -96,3 +102,8 @@ curl -s -F "file=@test/files/bad_formula_eq.csv;type=text/csv" http://127.0.0.1:
 `;type=text/csv` matters. Without it `curl` labels the file
 `application/octet-stream`, which the lab rejects. A browser sets the type by
 itself.
+
+<!-- nav -->
+---
+← [Prepare the two Linux VMs](03-hosts.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [BIG-IP building blocks](05-building-blocks.md) →
+<!-- /nav -->

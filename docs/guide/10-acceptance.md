@@ -1,3 +1,9 @@
+<!-- nav -->
+[Guide index](README.md) · [Intro](01-introduction.md) · [Planning](02-planning.md) · [VMs](03-hosts.md) · [Services](04-services.md) · [LTM objects](05-building-blocks.md) · [WAF policy](06-waf-policy.md) · [Antivirus](07-antivirus.md) · [Validator hop](08-validator-hop.md) · [Entry point](09-entry-point.md) · **Tests** · [Operations](11-operations.md) · [Showcase](12-showcase.md) · [Appendices](13-appendix.md)
+
+---
+<!-- /nav -->
+
 # Acceptance tests
 
 The bundle includes a test runner that sends 43 uploads through the BIG-IP,
@@ -87,3 +93,8 @@ The lab is working when all of these are true.
 7. The test client validates the BIG-IP's certificate.
 8. Every block has a BIG-IP support ID, every validator verdict has an upload
    ID, and the logs tie them to the file's hash.
+
+<!-- nav -->
+---
+← [The entry point](09-entry-point.md) &nbsp;|&nbsp; [Guide index](README.md) &nbsp;|&nbsp; [Operations](11-operations.md) →
+<!-- /nav -->
